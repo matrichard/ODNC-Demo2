@@ -1,0 +1,44 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+
+    <h3>CORS Client</h3>
+
+    <button id="getBoards">Get Boards</button>
+
+    <pre id="output">
+
+
+
+
+    </pre>
+
+    <script src="Scripts/jquery-2.0.3.js"></script>
+
+    <script>
+
+        $(function () {
+            
+            var getBoards = function () {
+
+                $.get(boardUrl).always(showResponse);
+                return false;
+            };
+
+            var showResponse = function (response) {
+                $('#output').text(JSON.stringify(response, null, 4));
+            };
+
+            var boardUrl = "http://localhost:63325/api/boards";
+            $('#getBoards').click(getBoards);
+
+        });
+    </script>
+
+
+
+</body>
+</html>
